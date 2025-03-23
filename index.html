@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Prices Today</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-bg {
+            background: #e7c13d;
+        }
+
+        .gold-text {
+            color: #e7c13d;
+        }
+
+        .navbar {
+            background-color: #333;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            color: #e7c13d !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .price-card {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .price-card .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .price-card .price-label {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .price-card .price-change {
+            font-size: 1.1rem;
+            margin-top: 4px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .price-card .price-change span {
+            margin-right: 10px;
+        }
+
+        .arrow-up {
+            color: #28a745; /* Green for increase */
+        }
+
+        .arrow-down {
+            color: #dc3545; /* Red for decrease */
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .currunt-time {
+            color: white;
+        }
+
+        .table thead th {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .table tbody td {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa; /* لون مختلف لكل صف زوجي */
+        }
+        .table-container {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            padding: 15px;
+        }
+        .title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        .ticker-container {
+            background: #222;
+            color: #fff;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .ticker-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollTicker 20s linear infinite;
+        }
+
+        @keyframes scrollTicker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        .price-up {
+            color: #00FF00;
+        }
+
+        .price-down {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Altınbay</a>
+            <div class="" id="navbarNav">
+                <span class="currunt-time">22.03.2025 15:56:27</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Price Card -->
+     <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="price-card">
+                    <p class="text-start d-flex align-items-center justify-content-between mb-1">
+                        <span style="font-weight: 500;font-size: 20px;">Has Altın</span>
+                        <img src="images/ingots.png" alt="" style="width: 40px;">
+                    </p>
+                    <div class="price text-start">90.234 ₺</div>
+                    <div class="price-change text-danger">
+                        <span class="arrow-down"><i class="fas fa-arrow-down"></i></span>
+                        0.7%
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="price-card">
+                    <p class="text-start d-flex align-items-center justify-content-between mb-1">
+                        <span style="font-weight: 500;font-size: 20px;">Ons Altın</span>
+                        <img src="images/gold-bar.png" alt="" style="width: 40px;">
+                    </p>
+                    <div class="price text-start">3.024,10 ₺</div>
+                    <div class="price-change text-danger">
+                        <span class="arrow-down"><i class="fas fa-arrow-down"></i></span>
+                        0.1%
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="price-card">
+                    <p class="text-start d-flex align-items-center justify-content-between mb-1">
+                        <span style="font-weight: 500;font-size: 20px;">Dolar</span>
+                        <img src="images/dollar-symbol.png" alt="" style="width: 40px;">
+                    </p>
+                    <div class="price text-start">38,28</div>
+                    <div class="price-change text-danger">
+                        <span class="arrow-down"><i class="fas fa-arrow-down"></i></span>
+                        0.4%
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="price-card">
+                    <p class="text-start d-flex align-items-center justify-content-between mb-1">
+                        <span style="font-weight: 500;font-size: 20px;">Euro</span>
+                        <img src="images/euro.png" alt="" style="width: 40px;">
+                    </p>
+                    <div class="price text-start">41,35</div>
+                    <div class="price-change text-success">
+                        <span class="arrow-up text-success"><i class="fas fa-arrow-up"></i></span>
+                        0.2%
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+
+     <div class="container">
+        <div class="row">
+            <!-- الجدول الأول -->
+            <div class="col-md-6 mb-3">
+                <div class="table-container">
+                    <div class="title">Gram Altın Fiyatları</div>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Tür</th>
+                                <th>Satış Fiyatı</th>
+                                <th>Alış Fiyatı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22 Ayar Bilezik</td>
+                                <td>3.353 ₺</td>
+                                <td>3.593 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>22 Ayar 1 gr</td>
+                                <td>3.327 ₺</td>
+                                <td>3.660 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>24 Ayar 1 gr</td>
+                                <td>3.700 ₺</td>
+                                <td>3.811 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>18 Ayar 1 gr</td>
+                                <td>2.560 ₺</td>
+                                <td>0.00 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>14 Ayar 1 gr</td>
+                                <td>2.059 ₺</td>
+                                <td>0.00 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>Cumhuriyet Ata</td>
+                                <td>24.422 ₺</td>
+                                <td>25.250 ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <!-- الجدول الثاني -->
+            <div class="col-md-6">
+                <div class="table-container">
+                    <div class="title">Çeyrek ve Ziynet Altın</div>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>YENİ</th>
+                                <th>Alış</th>
+                                <th>Satış</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Çeyrek</td>
+                                <td>5.985 ₺</td>
+                                <td>6.271 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>Yarım</td>
+                                <td>11.970 ₺</td>
+                                <td>12.435 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>Ziynet</td>
+                                <td>23.940 ₺</td>
+                                <td>24.871 ₺</td>
+                            </tr>
+                            <tr>
+                                <td>2,5'luk Gremse</td>
+                                <td>59.854 ₺</td>
+                                <td>62.179 ₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticker-container">
+        <div class="ticker-wrapper" id="ticker"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <p class="mb-0">&copy; 2025 Altınbay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Font Awesome for icons (optional) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const exchangeRates = [
+            { currency: "USD", rate: "32.50 ₺", change: "up" },
+            { currency: "EUR", rate: "35.85 ₺", change: "down" },
+            { currency: "GBP", rate: "42.10 ₺", change: "up" },
+            { currency: "SAR", rate: "8.65 ₺", change: "down" },
+            { currency: "AED", rate: "8.87 ₺", change: "up" },
+            { currency: "KWD", rate: "106.45 ₺", change: "down" },
+            { currency: "JPY", rate: "0.24 ₺", change: "up" },
+            { currency: "CHF", rate: "36.30 ₺", change: "down" }
+        ];
+    
+        function updateTicker() {
+            const ticker = document.getElementById("ticker");
+            ticker.innerHTML = exchangeRates
+                .map(item => {
+                    const arrow = item.change === "up"
+                        ? '<i class="fas fa-arrow-up price-up"></i>'
+                        : '<i class="fas fa-arrow-down price-down"></i>';
+                    
+                    const priceClass = item.change === "up" ? "price-up" : "price-down";
+    
+                    return `<span class="ticker-item ${priceClass}">${item.currency}: ${item.rate} ${arrow}</span>`;
+                })
+                .join(" ");
+        }
+    
+        updateTicker();
+    </script>
+    
+</body>
+</html>
