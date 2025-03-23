@@ -112,7 +112,7 @@
             text-decoration: underline;
         }
 
-        .currunt-time {
+        .current-time {
             color: white;
         }
 
@@ -185,7 +185,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">Altınbay</a>
             <div class="" id="navbarNav">
-                <span class="currunt-time">22.03.2025 15:56:27</span>
+                <span class="current-time">22.03.2025 15:56:27</span>
             </div>
         </div>
     </nav>
@@ -383,7 +383,32 @@
         }
     
         updateTicker();
+
+        function updateCurrentTime() {
+            const currentTimeElement = document.querySelector('.current-time');
+            
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const year = now.getFullYear();
+
+            // Format the date and time
+            const formattedTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+
+            // Update the content of the span
+            currentTimeElement.textContent = formattedTime;
+        }
+
+        // Update the time every second
+        setInterval(updateCurrentTime, 1000);
+
+        // Initial call to display the time immediately
+        updateCurrentTime();
     </script>
+    
     
 </body>
 </html>
